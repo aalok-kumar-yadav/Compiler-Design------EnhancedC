@@ -515,19 +515,19 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,    41,    41,    43,    44,    47,    48,    51,    54,    55,
-      57,    60,    64,    65,    68,    69,    70,    74,    75,    80,
-      81,    85,    89,    90,    93,    96,   106,   107,   111,   112,
-     113,   114,   115,   116,   117,   121,   122,   124,   125,   128,
-     133,   134,   137,   138,   143,   143,   148,   152,   153,   153,
-     153,   156,   160,   161,   162,   169,   170,   174,   177,   178,
-     179,   180,   181,   182,   183,   183,   188,   189,   193,   194,
-     197,   198,   199,   200,   204,   205,   208,   209,   210,   211,
-     212,   213,   221,   222,   223,   229,   230,   234,   235,   236,
-     240,   241,   242,   248,   249,   254,   258,   259,   261,   261,
-     264,   264,   264,   264,   264,   264,   266,   269,   282,   283,
-     286,   287,   288,   289,   290,   291,   294,   297,   298,   299,
-     302,   303,   304,   305
+       0,    37,    37,    39,    40,    43,    44,    47,    50,    51,
+      53,    56,    60,    61,    64,    65,    66,    70,    71,    76,
+      77,    81,    85,    86,    89,    92,   102,   103,   107,   108,
+     109,   110,   111,   112,   113,   117,   118,   120,   121,   124,
+     129,   130,   133,   134,   139,   139,   144,   148,   149,   149,
+     149,   152,   156,   157,   159,   166,   167,   171,   174,   175,
+     176,   177,   178,   179,   180,   180,   185,   186,   190,   191,
+     194,   195,   196,   197,   201,   202,   205,   206,   207,   208,
+     209,   210,   218,   222,   223,   230,   231,   236,   237,   238,
+     242,   243,   244,   250,   251,   257,   262,   263,   265,   265,
+     268,   268,   268,   268,   268,   268,   270,   273,   286,   287,
+     290,   291,   292,   293,   294,   295,   298,   301,   302,   303,
+     307,   308,   309,   310
 };
 #endif
 
@@ -1497,133 +1497,141 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 41 "sample2.y" /* yacc.c:1646  */
+#line 37 "sample2.y" /* yacc.c:1646  */
     {   printf("parsed successfully\n");}
 #line 1503 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 53:
-#line 161 "sample2.y" /* yacc.c:1646  */
-    { (yyvsp[-2].num)=(yyvsp[0].num);printf("var_declartion=%d\n",(yyvsp[-2].num));}
-#line 1509 "y.tab.c" /* yacc.c:1646  */
+#line 157 "sample2.y" /* yacc.c:1646  */
+    {  (yyvsp[-2].num)=(yyvsp[0].num);updateSymbolVal((yyval.num),(yyvsp[-2].num));//printf("var_declartion= %c,%d\n",$$,$1);
+}
+#line 1510 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 55:
-#line 169 "sample2.y" /* yacc.c:1646  */
+#line 166 "sample2.y" /* yacc.c:1646  */
     {(yyval.num)=(yyvsp[0].num);}
-#line 1515 "y.tab.c" /* yacc.c:1646  */
+#line 1516 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 67:
-#line 189 "sample2.y" /* yacc.c:1646  */
+#line 186 "sample2.y" /* yacc.c:1646  */
     {(yyval.num)=(yyvsp[0].num);}
-#line 1521 "y.tab.c" /* yacc.c:1646  */
+#line 1522 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 69:
-#line 194 "sample2.y" /* yacc.c:1646  */
+#line 191 "sample2.y" /* yacc.c:1646  */
     {(yyval.num)=(yyvsp[0].num);}
-#line 1527 "y.tab.c" /* yacc.c:1646  */
+#line 1528 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 71:
-#line 198 "sample2.y" /* yacc.c:1646  */
+#line 195 "sample2.y" /* yacc.c:1646  */
     {(yyval.num)=(yyvsp[0].num);}
-#line 1533 "y.tab.c" /* yacc.c:1646  */
+#line 1534 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 75:
-#line 205 "sample2.y" /* yacc.c:1646  */
+#line 202 "sample2.y" /* yacc.c:1646  */
     {(yyval.num)=(yyvsp[0].num);}
-#line 1539 "y.tab.c" /* yacc.c:1646  */
+#line 1540 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 82:
-#line 221 "sample2.y" /* yacc.c:1646  */
-    {(yyval.num) = (yyvsp[-2].num) + (yyvsp[0].num); printf(" sum = %d \n",(yyval.num));}
-#line 1545 "y.tab.c" /* yacc.c:1646  */
+#line 218 "sample2.y" /* yacc.c:1646  */
+    {
+(yyval.num) = (yyvsp[-2].num) + (yyvsp[0].num); updateSymbolVal((yyval.num),(yyvsp[-2].num) + (yyvsp[0].num)); printf("value = %d \n",symbolVal((yyvsp[0].num)));
+}
+#line 1548 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 83:
 #line 222 "sample2.y" /* yacc.c:1646  */
     {(yyval.num) = (yyvsp[-2].num) - (yyvsp[0].num);}
-#line 1551 "y.tab.c" /* yacc.c:1646  */
+#line 1554 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 84:
 #line 223 "sample2.y" /* yacc.c:1646  */
     {   (yyval.num) = (yyvsp[0].num);
-                              printf("term_check = %c \n",(yyvsp[0].num));
-					 printf("term_check = %d \n",(yyvsp[0].num));   }
-#line 1559 "y.tab.c" /* yacc.c:1646  */
+                            //  printf("term_check = %c \n",$1);
+					// printf("term_check = %d \n",symbolVal($1));
+   }
+#line 1563 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 86:
-#line 230 "sample2.y" /* yacc.c:1646  */
-    {(yyval.num)=(yyvsp[0].num);}
-#line 1565 "y.tab.c" /* yacc.c:1646  */
+#line 231 "sample2.y" /* yacc.c:1646  */
+    {(yyval.num)=(yyvsp[0].num);//printf("term = %c ,%d \n",$1,$1);
+}
+#line 1570 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 92:
-#line 242 "sample2.y" /* yacc.c:1646  */
+#line 244 "sample2.y" /* yacc.c:1646  */
     {
-                        (yyval.num)=(yyvsp[0].id);}
-#line 1572 "y.tab.c" /* yacc.c:1646  */
+                        (yyval.num)=(yyvsp[0].num);}
+#line 1577 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 93:
-#line 248 "sample2.y" /* yacc.c:1646  */
-    {(yyval.id)=(yyvsp[0].num);}
-#line 1578 "y.tab.c" /* yacc.c:1646  */
+#line 250 "sample2.y" /* yacc.c:1646  */
+    {(yyval.num)=(yyvsp[0].num);}
+#line 1583 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 94:
-#line 249 "sample2.y" /* yacc.c:1646  */
-    {  updateSymbolVal((yyval.id),(yyvsp[0].num));
-		 printf(" factor %d ",(yyval.id));		  }
-#line 1585 "y.tab.c" /* yacc.c:1646  */
+#line 251 "sample2.y" /* yacc.c:1646  */
+    { (yyval.num)=symbolVal((yyvsp[0].num));
+		// printf(" factor %d \n",symbolVal($1));		
+  }
+#line 1591 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 95:
-#line 254 "sample2.y" /* yacc.c:1646  */
-    {  (yyval.num)=(yyvsp[0].num); printf("modify= %c\n",(yyval.num));
-							printf("modify= %d\n",(yyval.num)); }
-#line 1592 "y.tab.c" /* yacc.c:1646  */
+#line 257 "sample2.y" /* yacc.c:1646  */
+    { // printf("modify= %c, mf_val= %d\n",$$,symbolVal($$));
+(yyval.num)=(yyvsp[0].num);
+							}
+#line 1599 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 96:
-#line 258 "sample2.y" /* yacc.c:1646  */
+#line 262 "sample2.y" /* yacc.c:1646  */
     {(yyval.num)=(yyvsp[0].num);}
-#line 1598 "y.tab.c" /* yacc.c:1646  */
+#line 1605 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 106:
-#line 266 "sample2.y" /* yacc.c:1646  */
+#line 270 "sample2.y" /* yacc.c:1646  */
     {(yyval.num)=(yyvsp[0].num);}
-#line 1604 "y.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 107:
-#line 269 "sample2.y" /* yacc.c:1646  */
-    {(yyval.num) = (yyvsp[0].num);printf("num_const=%d\n",(yyval.num));
-	 	               }
 #line 1611 "y.tab.c" /* yacc.c:1646  */
     break;
 
+  case 107:
+#line 273 "sample2.y" /* yacc.c:1646  */
+    {(yyval.num) = (yyvsp[0].num);//printf("num_const=%d\n",$$);
+	 	               }
+#line 1618 "y.tab.c" /* yacc.c:1646  */
+    break;
+
   case 117:
-#line 297 "sample2.y" /* yacc.c:1646  */
-    {(yyval.num) = symbolVal((yyvsp[0].id)); (yyval.num)=(yyvsp[0].id);  }
-#line 1617 "y.tab.c" /* yacc.c:1646  */
+#line 301 "sample2.y" /* yacc.c:1646  */
+    {(yyval.num) = symbolVal((yyvsp[0].num)); (yyval.num)=(yyvsp[0].num); }
+#line 1624 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 119:
-#line 299 "sample2.y" /* yacc.c:1646  */
-    {  (yyval.num) =(yyvsp[0].num);  printf("digit check %d",(yyval.num));}
-#line 1623 "y.tab.c" /* yacc.c:1646  */
+#line 303 "sample2.y" /* yacc.c:1646  */
+    {  (yyval.num) =(yyvsp[0].num); // printf("digit check= %d",$$);
+}
+#line 1631 "y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1627 "y.tab.c" /* yacc.c:1646  */
+#line 1635 "y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1851,7 +1859,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 308 "sample2.y" /* yacc.c:1906  */
+#line 313 "sample2.y" /* yacc.c:1906  */
 
 /* computersymbol */
 
@@ -1880,7 +1888,7 @@ void updateSymbolVal( char symbol,int val)
 {
 	int bucket = computeSymbolIndex(symbol);
 	symbols[bucket] = val;
-printf(" val= %d\n",val);
+//printf(" val= %d\n",val);
 
 }
 

@@ -29,13 +29,9 @@ int yylex();
 %token NEW;
 %token OUTPUT;
 %token <num> Digit
-%type <num> Arithmetic_Expression term Numerical_Constant constant unmodifiable  unaryExpression logicalExpression andExpression unaryRelExpression relExpression Expression_Statement
-%type <num> Assignment_Statements
-%type <id> Variable 
-%type <id>  Alphabet
-%type <id> factor
-%type <num> ID modifiable
+%type <num> Arithmetic_Expression term unaryExpression logicalExpression andExpression unaryRelExpression relExpression Expression_Statement   factor Alphabet Variable 
 
+%type <num> modifiable unmodifiable constant Numerical_Constant ID
 %%
 
 program: start {   printf("parsed successfully\n");}
@@ -158,7 +154,8 @@ Formal_Argument :  DataType ID
 
 
 Variable :  ID 
-|ID '=' Digit { $1=$3;printf("var_declartion=%d\n",$1);}
+|ID '=' Digit {  $1=$3;updateSymbolVal($$,$1);//printf("var_declartion= %c,%d\n",$$,$1);
+}
 |ID '=' NEW ID '(' ')'
 ;
 
@@ -218,16 +215,21 @@ relExpression : Arithmetic_Expression Relational_Operator  Arithmetic_Expression
 
 
 
-Arithmetic_Expression  : Arithmetic_Expression  '+'   term  {$$ = $1 + $3; printf(" sum = %d \n",$$);}
+Arithmetic_Expression  : Arithmetic_Expression  '+'   term  {
+$$ = $1 + $3; updateSymbolVal($$,$1 + $3); printf("value = %d \n",symbolVal($3));
+}
+
 | Arithmetic_Expression  '-'  term   {$$ = $1 - $3;}
 |   term		 {   $$ = $1;
-                              printf("term_check = %c \n",$1);
-					 printf("term_check = %d \n",$1);   }
+                            //  printf("term_check = %c \n",$1);
+					// printf("term_check = %d \n",symbolVal($1));
+   }
 ;
 
 
 term  :  term  Operator  unaryExpression 
-| unaryExpression  {$$=$1;}
+| unaryExpression  {$$=$1;//printf("term = %c ,%d \n",$1,$1);
+}
 ;
 
 
@@ -246,13 +248,15 @@ unaryExpression :  '-' factor
 
 
 factor : unmodifiable  {$$=$1;}
-| modifiable     {  updateSymbolVal($$,$1);
-		 printf(" factor %d ",$$);		  }
+| modifiable     { $$=symbolVal($1);
+		// printf(" factor %d \n",symbolVal($1));		
+  }
 ;
 
 
-modifiable :  ID  {  $$=$1; printf("modify= %c\n",$$);
-							printf("modify= %d\n",$$); }
+modifiable :  ID  { // printf("modify= %c, mf_val= %d\n",$$,symbolVal($$));
+$$=$1;
+							}
 ;
 
 unmodifiable  : constant {$$=$1;}
@@ -266,7 +270,7 @@ Actual_Parameter_List : Actual_Parameter_List',' Expression_Statement  |   Actua
  constant : Numerical_Constant {$$=$1;}
 ;
 
-Numerical_Constant : Digit   {$$ = $1;printf("num_const=%d\n",$$);
+Numerical_Constant : Digit  {$$ = $1;//printf("num_const=%d\n",$$);
 	 	               }
 ;
 
@@ -294,9 +298,10 @@ BasicType : LONG
 Reference_Type : ID
 ;
 
-ID : Alphabet  {$$ = symbolVal($1); $$=$1;  } 
+ID : Alphabet  {$$ = symbolVal($1); $$=$1; } 
 |Alphabet Alphabet_Digit
-|Digit {  $$ =$1;  printf("digit check %d",$$);} 
+|Digit {  $$ =$1; // printf("digit check= %d",$$);
+} 
 ;
 
 Alphabet_Digit : Digit 
@@ -333,7 +338,7 @@ void updateSymbolVal( char symbol,int val)
 {
 	int bucket = computeSymbolIndex(symbol);
 	symbols[bucket] = val;
-printf(" val= %d\n",val);
+//printf(" val= %d\n",val);
 
 }
 
