@@ -8,9 +8,9 @@ digit [0-9]
 [ ]      ;
 [\t]     ;                                   
 [\n]    {yylineno = yylineno + yylineno;}  // FOR NEW LINE  
-[a-zA-Z] {return Alphabet;}
+[a-zA-Z] {yylval.id = yytext[0]; return Alphabet;}
 
-{digit}	 {return Digit;}
+{digit}	  {yylval.num = atoi(yytext); return Digit;}
 class  { return class;}
 
 include { return include;}
@@ -98,6 +98,7 @@ shared    {return shared;}
 return   {return RETURN;}
 
 new       {return NEW;}
+output  {return OUTPUT;   }
 
 %%
 

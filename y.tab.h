@@ -63,24 +63,25 @@ extern int yydebug;
     Alphabet = 273,
     class = 274,
     include = 275,
-    Digit = 276,
-    true_ = 277,
-    false_ = 278,
-    INT = 279,
-    CHAR = 280,
-    FLOAT = 281,
-    LONG = 282,
-    DOUBLE = 283,
-    BOOLEAN = 284,
-    shared = 285,
-    WHILE = 286,
-    FOR = 287,
-    IF = 288,
-    ELSE = 289,
-    CONTINUE = 290,
-    BREAK = 291,
-    RETURN = 292,
-    NEW = 293
+    true_ = 276,
+    false_ = 277,
+    INT = 278,
+    CHAR = 279,
+    FLOAT = 280,
+    LONG = 281,
+    DOUBLE = 282,
+    BOOLEAN = 283,
+    shared = 284,
+    WHILE = 285,
+    FOR = 286,
+    IF = 287,
+    ELSE = 288,
+    CONTINUE = 289,
+    BREAK = 290,
+    RETURN = 291,
+    NEW = 292,
+    OUTPUT = 293,
+    Digit = 294
   };
 #endif
 /* Tokens.  */
@@ -102,28 +103,38 @@ extern int yydebug;
 #define Alphabet 273
 #define class 274
 #define include 275
-#define Digit 276
-#define true_ 277
-#define false_ 278
-#define INT 279
-#define CHAR 280
-#define FLOAT 281
-#define LONG 282
-#define DOUBLE 283
-#define BOOLEAN 284
-#define shared 285
-#define WHILE 286
-#define FOR 287
-#define IF 288
-#define ELSE 289
-#define CONTINUE 290
-#define BREAK 291
-#define RETURN 292
-#define NEW 293
+#define true_ 276
+#define false_ 277
+#define INT 278
+#define CHAR 279
+#define FLOAT 280
+#define LONG 281
+#define DOUBLE 282
+#define BOOLEAN 283
+#define shared 284
+#define WHILE 285
+#define FOR 286
+#define IF 287
+#define ELSE 288
+#define CONTINUE 289
+#define BREAK 290
+#define RETURN 291
+#define NEW 292
+#define OUTPUT 293
+#define Digit 294
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+
+union YYSTYPE
+{
+#line 17 "sample2.y" /* yacc.c:1909  */
+int num; char id;
+
+#line 135 "y.tab.h" /* yacc.c:1909  */
+};
+
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif
